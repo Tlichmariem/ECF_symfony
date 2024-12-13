@@ -1,8 +1,31 @@
 {# templates/livre/index.html.twig #}
-<h1>Liste des livres</h1>
+{% extends 'base.html.twig' %}
 
-<ul>
-    {% for livre in livres %}
-        <li>{{ livre.titre }} - {{ livre.auteur }} - {{ livre.etat }}</li>
-    {% endfor %}
-</ul>
+{% block title %}Liste des livres{% endblock %}
+
+{% block body %}
+    <h1 class="my-4">Liste des livres</h1>
+
+    <form method="get" class="mb-3">
+        <input type="text" name="search" value="{{ search }}" class="form-control" placeholder="Rechercher un livre">
+        <button type="submit" class="btn btn-primary mt-2">Rechercher</button>
+    </form>
+
+    <a href="{{ path('livre_ajouter') }}" class="btn btn-primary mb-3">Ajouter un livre</a>
+
+    <div class="row">
+        {% for livre in livres %}
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ livre.titre }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ livre.auteur }}</h6>
+                        <p class="card-text">{{ livre.etat }}</p>
+                        <a href="{{ path('livre_edit', {'id': livre.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                        <a href="{{ path('livre_delete', {'id': livre.id}) }}" class="btn btn-danger btn-sm" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce livre ?')">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

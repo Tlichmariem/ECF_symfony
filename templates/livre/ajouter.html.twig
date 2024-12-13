@@ -1,0 +1,27 @@
+{# templates/livre/ajouter.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un livre{% endblock %}
+
+{% block body %}
+    <h1 class="my-4">Ajouter un livre</h1>
+
+    {{ form_start(form) }}
+        <div class="mb-3">
+            {{ form_row(form.titre, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_row(form.auteur, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_row(form.etat, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_row(form.disponible, {'attr': {'class': 'form-check-input'}}) }}
+        </div>
+        <div class="mb-3">
+            {{ form_row(form.submit, {'attr': {'class': 'btn btn-success'}}) }}
+        </div>
+    {{ form_end(form) }}
+{% endblock %}
