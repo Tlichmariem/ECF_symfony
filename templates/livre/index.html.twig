@@ -1,0 +1,8 @@
+{# templates/livre/index.html.twig #}
+<h1>Liste des livres</h1>
+
+<ul>
+    {% for livre in livres %}
+        <li>{{ livre.titre }} - {{ livre.auteur }} - {{ livre.etat }}</li>
+    {% endfor %}
+</ul>
